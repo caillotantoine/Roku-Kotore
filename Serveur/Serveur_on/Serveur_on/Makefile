@@ -1,0 +1,16 @@
+all: serveur_on
+
+serveur_on: serveur.o class_serveur.o serveur_listening.o class_client.o
+	cc -o serveur_on -g serveur.o class_serveur.o serveur_listening.o class_client.o -lpthread
+
+serveur.o: serveur.c 
+	cc -c serveur.c
+class_client.o: class_client.c
+	cc -c class_client.c
+serveur_listening.o:serveur_listening.c
+	cc -c serveur_listening.c
+
+class_serveur.o: class_serveur.c
+	cc -c class_serveur.c
+clean:
+	rm serveur_on serveur.o class_serveur.o class_client.o serveur_listening.o
